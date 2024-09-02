@@ -16,19 +16,25 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="text" type="text"/>
-            <column name="isDone" type="Boolean"/>
+            <column name="is_done" type="Boolean"/>
         </createTable>
     </changeSet>
     <changeSet author="BeyzanurAydın" id="002" >
         <insert tableName="todo">
             <column name="text" value="Kitap oku (30 dk)" />
-            <column name="isDone" value="true" />
+            <column name="is_done" value="true" />
         </insert>
     </changeSet>
     <changeSet author="BeyzanurAydın" id="003" >
         <insert tableName="todo">
             <column name="text" value="Spor yap" />
-            <column name="isDone" value="true" />
+            <column name="is_done" value="true" />
+        </insert>
+    </changeSet>
+    <changeSet author="BeyzanurAydın" id="004" >
+        <insert tableName="todo">
+            <column name="text" value="Bitkileri sula" />
+            <column name="is_done" value="true" />
         </insert>
     </changeSet>
 </databaseChangeLog>
