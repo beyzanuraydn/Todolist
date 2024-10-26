@@ -1,18 +1,24 @@
 package com.example.todolist.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name="todo")
 @Data
 public class Text {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
-    @Column(name="isDone")
+    @Column(name="is_done")
     private boolean isDone;
+    @ManyToOne(fetch= FetchType.EAGER)
+    @JoinColumn(name="user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+     User user;
+
 }

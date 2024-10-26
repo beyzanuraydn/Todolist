@@ -17,26 +17,59 @@
             </column>
             <column name="text" type="text"/>
             <column name="is_done" type="Boolean"/>
+            <column name ="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
     <changeSet author="BeyzanurAydın" id="002" >
         <insert tableName="todo">
             <column name="text" value="Kitap oku (30 dk)" />
             <column name="is_done" value="true" />
+            <column name="user_id" value="1" />
         </insert>
     </changeSet>
     <changeSet author="BeyzanurAydın" id="003" >
         <insert tableName="todo">
             <column name="text" value="Spor yap" />
             <column name="is_done" value="true" />
+            <column name ="user_id" value="1"/>
         </insert>
     </changeSet>
     <changeSet author="BeyzanurAydın" id="004" >
         <insert tableName="todo">
             <column name="text" value="Bitkileri sula" />
             <column name="is_done" value="true" />
+            <column name ="user_id" value="1"/>
         </insert>
     </changeSet>
+    <changeSet  author="BeyzanurAydın"  id="005">
+        <createTable
+                schemaName="public"
+                tableName="users">
+            <column  name="id"  type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_name" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="password" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="BeyzanurAydın" id="006" >
+        <insert tableName="users">
+            <column name="user_name" value="Beyza" />
+            <column name="email" value="beyza1@gmail.com" />
+            <column name="password" value="12345" />
+        </insert>
+    </changeSet>
+    <changeSet author="BeyzanurAydın" id="007" >
+        <addForeignKeyConstraint baseTableName="todo"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_todo_users"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id" />
+
+    </changeSet>
+
+
 </databaseChangeLog>
 
 
